@@ -1,0 +1,79 @@
+<?php
+
+class Conta {
+    private float $saldo;
+    private string $cpf;
+    private string $nome;
+    
+    public function __construct(string $cpftitular, string $nometitular)
+    {
+        $this -> saldo = 0;
+        $this -> cpf = $cpftitular;
+        $this -> nome = $nometitular;
+        $this -> limiternome ($nometitular);
+        $this -> limitercpf ($cpftitular);
+        
+         
+    }
+
+        public function sacar (float $valorasacar){
+            if($valorasacar > $this -> saldo){
+                echo 'seu saldo é insuficiente';
+            } else {
+                $this -> saldo -= $valorasacar;
+            }
+        }
+            public function depositar(float $valoradepositar){
+            if ($valoradepositar < 0){
+                echo 'você precisa depositar algo';
+            } else {
+                $this -> saldo += $valoradepositar;
+            }
+        }    
+            public function transferir ($valoradepositar, Conta $contaadepositar){
+                if($valoradepositar > $this -> saldo){
+                    echo 'saldo indisponivel';
+                }else {
+                    $this -> sacar ($valoradepositar);
+                    $contaadepositar -> depositar($valoradepositar);
+                } 
+           }
+            public function exibesaldo (){
+                return $this -> saldo;
+                }
+
+                public function exibenome()
+                {
+                    return $this -> nome;
+                }
+
+                public function exibecpf()
+                {
+                    return $this -> cpf;
+                }
+               private function limiternome (string $nometitular)
+                {
+                    if (strlen($nometitular) < 5) 
+                    {
+                        echo 'o nome precisa ter no mínimo 5 caracteres';
+                        exit();
+                    } 
+                }    
+               private function limitercpf (string $cpftitular)
+                {
+                    if (strlen ($cpftitular) < 14) 
+                    {
+                        echo 'o cpf precisa ter exatos 11 numeros';
+                        exit();    
+                    }
+                    if (strlen ($cpftitular) > 14 )
+                    {
+                        echo 'o cpf não pode conter mais doq 11 números';
+                        exit();
+                    }
+                   
+                }
+
+    
+                
+}

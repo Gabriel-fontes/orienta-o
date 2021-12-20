@@ -1,0 +1,10 @@
+<?php
+
+require_once 'conta';
+
+$contateste = new Conta ('123.345.234.34', 'gabriel');
+$contateste -> depositar (300);
+$contateste -> sacar (100);
+echo $contateste -> exibesaldo() . PHP_EOL;
+echo $contateste -> exibenome() . PHP_EOL;
+echo $contateste -> exibecpf(). PHP_EOL;
