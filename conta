@@ -4,6 +4,7 @@ class Conta {
     private float $saldo;
     private string $cpf;
     private string $nome;
+    private static $numerodecontas = 0;
     
     public function __construct(string $cpftitular, string $nometitular)
     {
@@ -12,6 +13,7 @@ class Conta {
         $this -> nome = $nometitular;
         $this -> limiternome ($nometitular);
         $this -> limitercpf ($cpftitular);
+        self::$numerodecontas++;
         
          
     }
@@ -21,6 +23,7 @@ class Conta {
                 echo 'seu saldo é insuficiente';
             } else {
                 $this -> saldo -= $valorasacar;
+     
             }
         }
             public function depositar(float $valoradepositar){
@@ -71,9 +74,17 @@ class Conta {
                         echo 'o cpf não pode conter mais doq 11 números';
                         exit();
                     }
-                   
                 }
-
+                   public static function contarcontas(): int
+                   {  
+                       return self::$numerodecontas;
+                   }
+                
+                   public function __destruct ()
+                   {
+                       self::$numerodecontas--;
+                       }
+                   
     
                 
 }

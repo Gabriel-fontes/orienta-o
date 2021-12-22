@@ -8,3 +8,5 @@ $contateste -> sacar (100);
 echo $contateste -> exibesaldo() . PHP_EOL;
 echo $contateste -> exibenome() . PHP_EOL;
 echo $contateste -> exibecpf(). PHP_EOL;
+$outra = new Conta ('123.456.767.67', 'fabiane');
+echo Conta::contarcontas();
