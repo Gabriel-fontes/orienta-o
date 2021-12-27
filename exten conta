@@ -1,12 +1,11 @@
 <?php
 
 require_once 'conta';
+require_once 'endereco';
 
-$contateste = new Conta ('123.345.234.34', 'gabriel');
+$contateste = new Conta(new Titular('123.345.244.34', 'gabriel'));
 $contateste -> depositar (300);
 $contateste -> sacar (100);
+echo $contateste -> recuperaNomeTitular() . PHP_EOL;
+echo $contateste -> recuperaCpfTitular() . PHP_EOL;
 echo $contateste -> exibesaldo() . PHP_EOL;
-echo $contateste -> exibenome() . PHP_EOL;
-echo $contateste -> exibecpf(). PHP_EOL;
-$outra = new Conta ('123.456.767.67', 'fabiane');
-echo Conta::contarcontas();

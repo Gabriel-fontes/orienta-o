@@ -1,0 +1,89 @@
+<?php
+
+class endereco
+{
+    private string $cidade;
+    private string $bairro;
+    private string $rua;
+    private string $numero;
+
+   public function __construct (string $cidade, string $bairro, string $rua, string $numero)
+   {
+       $this -> cidade = $cidade;
+       $this -> bairro = $bairro;
+       $this -> rua = $rua;
+       $this -> numero = $numero;
+   }
+
+
+   public function getcidade(): string
+   {
+       return $this -> cidade;
+   }
+   public function getbairro(): string
+   {
+       return $this -> bairro;
+   }
+   public function getrua()
+   {
+       return $this -> rua;
+   }
+   public function getnumero()
+   {
+       return $this -> numero;
+   }
+
+
+
+
+}
+
+
+class Titular
+{
+    private $cpf;
+    private $nome;
+
+    public function __construct(string $cpf, string $nome)
+    {
+        $this->cpf = $cpf;
+        $this->validaNomeTitular($nome);
+        $this->nome = $nome;
+        $this-> limitercpf($cpf);
+    }
+
+    public function recuperaCpf(): string
+    {
+        return $this->cpf;
+    }
+
+    public function recuperaNome(): string
+    {
+        return $this->nome;
+    }
+
+    private function validaNomeTitular(string $nomeTitular)
+    {
+        if (strlen($nomeTitular) < 5) {
+            echo "Nome precisa ter pelo menos 5 caracteres";
+            exit();
+        }
+    }
+
+
+    private function limitercpf (string $cpftitular)
+    {
+        if (strlen ($cpftitular) < 14) 
+        {
+            echo 'o cpf precisa ter exatos 11 numeros';
+            exit();    
+        }
+        if (strlen ($cpftitular) > 14 )
+        {
+            echo 'o cpf não pode conter mais doq 11 números';
+            exit();
+        }
+    }
+
+
+}
