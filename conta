@@ -5,62 +5,71 @@ class Conta {
     private float $saldo;
     private static $numerodecontas = 0;
     
-    public function __construct(Titular $titular)
+    public function __construct(Titular $titular, endereco $endereco)
     {
       $this -> titular = $titular;
+      $this -> endereco= $endereco;
       $this -> saldo = 0;
       self::$numerodecontas++;   
     }
 
-        public function sacar (float $valorasacar){
-            if($valorasacar > $this -> saldo){
-                echo 'seu saldo é insuficiente';
-            } else {
-                $this -> saldo -= $valorasacar;
-     
-            }
-        }
-            public function depositar(float $valoradepositar){
-            if ($valoradepositar < 0){
-                echo 'você precisa depositar algo';
-            } else {
-                $this -> saldo += $valoradepositar;
-            }
-        }    
-            public function transferir ($valoradepositar, Conta $contaadepositar){
-                if($valoradepositar > $this -> saldo){
-                    echo 'saldo indisponivel';
-                }else {
-                    $this -> sacar ($valoradepositar);
-                    $contaadepositar -> depositar($valoradepositar);
-                } 
-           }
-                public function exibesaldo ()
-                {
-                    return $this -> saldo;
-                
-                }
+                 public function sacar (float $valorasacar){
+                if($valorasacar > $this -> saldo){
+                    echo 'seu saldo é insuficiente';
+                } else {
+                    $this -> saldo -= $valorasacar;
+                    }   
+                    }
+                    public function depositar(float $valoradepositar){
+                        if ($valoradepositar < 0){
+                    echo 'você precisa depositar algo';
+                        } else {
+                    $this -> saldo += $valoradepositar;
+                        }
+                        }    
+                    public function transferir ($valoradepositar, Conta $contaadepositar){
+                    if($valoradepositar > $this -> saldo){
+                        echo 'saldo indisponivel';
+                         }else {
+                        $this -> sacar ($valoradepositar);
+                        $contaadepositar -> depositar($valoradepositar);
+                    } 
+                    }
+                    public function exibesaldo ()
+                    {
+                        return $this -> saldo;
+                    
+                    }
 
-                   public static function contarcontas(): int
-                   {  
-                       return self::$numerodecontas;
-                   }
+                    public static function contarcontas(): int
+                    {  
+                        return self::$numerodecontas;
+                    }
                 
-                   public function __destruct ()
-                   {
-                       self::$numerodecontas--;
+                     public function __destruct ()
+                    {
+                    self::$numerodecontas--;
                        }
                    
     
-                       public function recuperaNomeTitular(): string
+                     public function recuperaNomeTitular(): string
                        {
-                           return $this->titular->recuperaNome();
+                     return $this->titular->recuperaNome();
                        }
                        
-                       public function recuperaCpfTitular(): string
+                     public function recuperaCpfTitular(): string
                        {
-                           return $this->titular->recuperaCpf();
+                      return $this->titular->recuperaCpf();
                        }
+                     public function recuperaarua(): string
+                       {
+                      return $this ->endereco->getrua();
+                       }
+
+                      
+
+                      
+                 
 }
 
 

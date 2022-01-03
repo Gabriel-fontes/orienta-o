@@ -1,0 +1,21 @@
+<?php
+
+class pessoa
+{
+    private string $nome;
+    private $cpf;
+
+
+    public function __construct()
+    {
+        $this -> nome = $nome;
+        $this -> cpf  = $cpf;  
+    }
+
+
+
+
+
+
+
+}

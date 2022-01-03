@@ -3,9 +3,9 @@
 class endereco
 {
     private string $cidade;
-    private string $bairro;
-    private string $rua;
-    private string $numero;
+    public  string $bairro;
+    public  string $rua;
+    public  string $numero;
 
    public function __construct (string $cidade, string $bairro, string $rua, string $numero)
    {
@@ -39,12 +39,12 @@ class endereco
 }
 
 
-class Titular
+class Titular extends endereco
 {
-    private $cpf;
-    private $nome;
+    public $cpf;
+    public $nome;
 
-    public function __construct(string $cpf, string $nome)
+    public function __construct(string $cpf, string $nome) 
     {
         $this->cpf = $cpf;
         $this->validaNomeTitular($nome);
