@@ -1,11 +1,12 @@
 <?php
 
+
 class endereco
 {
-    private string $cidade;
-    public  string $bairro;
-    public  string $rua;
-    public  string $numero;
+    protected string $cidade;
+    protected string $bairro;
+    protected string $rua;
+    protected string $numero;
 
    public function __construct (string $cidade, string $bairro, string $rua, string $numero)
    {
@@ -46,6 +47,7 @@ class Titular extends endereco
 
     public function __construct(string $cpf, string $nome) 
     {
+        
         $this->cpf = $cpf;
         $this->validaNomeTitular($nome);
         $this->nome = $nome;
@@ -85,5 +87,20 @@ class Titular extends endereco
         }
     }
 
+    
+}
 
+class contapoupança extends Conta {
+    protected function percentual() 
+{
+       return 0.03;
+}
+}
+
+class contacorrente extends Conta
+{
+    protected function percentual()
+    {
+        return 0.05;
+    }
 }

@@ -1,9 +1,9 @@
 <?php
 
-class Conta {
-    private $titular;
-    private float $saldo;
-    private static $numerodecontas = 0;
+    abstract class Conta {
+    protected $titular;
+    protected float $saldo;
+    protected static $numerodecontas = 0;
     
     public function __construct(Titular $titular, endereco $endereco)
     {
@@ -13,11 +13,14 @@ class Conta {
       self::$numerodecontas++;   
     }
 
-                 public function sacar (float $valorasacar){
-                if($valorasacar > $this -> saldo){
+                   public function sacar (float $valorasacar): void{
+                  $tarifasaque = $valorasacar * $this -> percentual();
+                  $valorsaque = $valorasacar + $tarifasaque;
+                if($valorsaque > $this -> saldo){
                     echo 'seu saldo é insuficiente';
+                  
                 } else {
-                    $this -> saldo -= $valorasacar;
+                    $this -> saldo -= $valorsaque;
                     }   
                     }
                     public function depositar(float $valoradepositar){
@@ -66,8 +69,7 @@ class Conta {
                       return $this ->endereco->getrua();
                        }
 
-                      
-
+                     abstract protected function percentual();
                       
                  
 }

@@ -2,9 +2,13 @@
 
 require_once 'conta';
 require_once 'endereco';
+
+
+
+
 $bernadete = new endereco('sao_jose', 'forka', 'mariabernadete', '260');
 $rogerio = new titular ('123,435,345,34', 'rogerio');
-$contateste = new Conta($rogerio, $bernadete);
+$contateste = new Contapoupança($rogerio, $bernadete);
 $contateste -> depositar (300);
 $contateste -> sacar (100);
 echo $contateste -> recuperaNomeTitular() . PHP_EOL;
